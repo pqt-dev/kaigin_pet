@@ -1,0 +1,102 @@
+{
+  "app_name": "Kaigin Pet",
+  "ok": "OK",
+  "cancel": "Annuler",
+  "retry": "Réessayer",
+  "save": "Enregistrer",
+  "delete": "Supprimer",
+  "add": "Ajouter",
+  "done": "Terminé",
+  "close": "Fermer",
+
+  "home": "Accueil",
+  "tab_goals": "Objectifs",
+  "tab_journal": "Journal",
+  "tab_profile": "Profil",
+
+  "setting": "Paramètres",
+  "language": "Langue",
+  "language_system": "Langue du système",
+  "theme": "Thème",
+  "theme_light": "Clair",
+  "theme_dark": "Sombre",
+  "theme_system": "Système",
+
+  "pet": {
+    "level": "Niveau {level}",
+    "xp_progress": "{current} / {max} XP",
+    "mood_ecstatic": "Euphorique !",
+    "mood_happy": "Heureux",
+    "mood_neutral": "Neutre",
+    "mood_sad": "Triste",
+    "mood_tired": "Fatigué",
+    "greeting_morning": "Bonjour !",
+    "greeting_afternoon": "Bon après-midi !",
+    "greeting_evening": "Bonsoir !",
+    "goals_summary": "{done}/{total} objectifs accomplis aujourd'hui",
+    "level_up": "Niveau supérieur ! 🎉",
+    "level_up_message": "🎉 Niveau supérieur ! Tu as atteint le niveau {level} !",
+    "xp_earned": "+{xp} XP gagnés ! 🐦",
+    "feeling": "Humeur",
+    "today_progress": "Progrès du jour"
+  },
+
+  "goals": {
+    "title": "Objectifs du jour",
+    "empty": "Aucun objectif. Ajoutes-en un !",
+    "completed": "{done}/{total} accomplis",
+    "all_done": "Tous les objectifs accomplis ! Bravo !",
+    "add_goal": "Ajouter un objectif",
+    "add_a_goal": "Ajouter un objectif",
+    "custom_goal_hint": "Que veux-tu faire ?",
+    "category": "Catégorie",
+    "category_health": "Santé",
+    "category_mind": "Esprit",
+    "category_social": "Social",
+    "category_creative": "Créativité",
+    "category_learning": "Apprentissage",
+    "xp_reward": "+{xp} XP",
+    "goal_complete_message": "+{xp} XP gagnés !",
+    "reset_confirm": "Objectifs réinitialisés pour une nouvelle journée !"
+  },
+
+  "journal": {
+    "title": "Journal",
+    "empty": "Aucune entrée.\nÉcris comment tu te sens !",
+    "new_entry": "Nouvelle entrée",
+    "edit_entry": "Modifier l'entrée",
+    "untitled": "Sans titre",
+    "entry_title_hint": "Donne un titre à ton entrée...",
+    "entry_content_hint": "Comment te sens-tu aujourd'hui ? Écris tout ce que tu veux...",
+    "mood_great": "Super",
+    "mood_good": "Bien",
+    "mood_okay": "Correct",
+    "mood_bad": "Pas très bien",
+    "mood_terrible": "Terrible",
+    "how_are_you": "Comment te sens-tu ?",
+    "today": "Aujourd'hui",
+    "yesterday": "Hier"
+  },
+
+  "profile": {
+    "title": "Profil",
+    "your_pet": "Ton Kaigin",
+    "stats_title": "Statistiques",
+    "total_goals": "Objectifs accomplis",
+    "total_xp": "XP total",
+    "level": "Niveau",
+    "current_streak": "Série de jours",
+    "days": "{count} jours",
+    "app_settings": "Paramètres de l'appli",
+    "about": "À propos de Kaigin Pet",
+    "companion": "Ton compagnon virtuel de bien-être"
+  },
+
+  "error": {
+    "network": "Pas de connexion internet. Vérifie ton réseau et réessaie.",
+    "server": "Une erreur s'est produite sur le serveur. Réessaie plus tard.",
+    "auth": "Tu n'es pas autorisé. Connecte-toi et réessaie.",
+    "parsing": "Impossible de lire les données. Réessaie.",
+    "unexpected": "Une erreur inattendue s'est produite. Réessaie."
+  }
+}

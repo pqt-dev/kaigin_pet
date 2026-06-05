@@ -1,0 +1,102 @@
+{
+  "app_name": "Kaigin Pet",
+  "ok": "OK",
+  "cancel": "キャンセル",
+  "retry": "再試行",
+  "save": "保存",
+  "delete": "削除",
+  "add": "追加",
+  "done": "完了",
+  "close": "閉じる",
+
+  "home": "ホーム",
+  "tab_goals": "目標",
+  "tab_journal": "日記",
+  "tab_profile": "プロフィール",
+
+  "setting": "設定",
+  "language": "言語",
+  "language_system": "システム言語",
+  "theme": "テーマ",
+  "theme_light": "ライト",
+  "theme_dark": "ダーク",
+  "theme_system": "システム",
+
+  "pet": {
+    "level": "レベル{level}",
+    "xp_progress": "{current} / {max} XP",
+    "mood_ecstatic": "最高！",
+    "mood_happy": "嬉しい",
+    "mood_neutral": "普通",
+    "mood_sad": "悲しい",
+    "mood_tired": "疲れた",
+    "greeting_morning": "おはようございます！",
+    "greeting_afternoon": "こんにちは！",
+    "greeting_evening": "こんばんは！",
+    "goals_summary": "今日の目標 {done}/{total} 達成",
+    "level_up": "レベルアップ！🎉",
+    "level_up_message": "🎉 レベルアップ！レベル{level}に達しました！",
+    "xp_earned": "+{xp} XP獲得！🐦",
+    "feeling": "気持ち",
+    "today_progress": "今日の進捗"
+  },
+
+  "goals": {
+    "title": "今日の目標",
+    "empty": "目標がありません。追加しましょう！",
+    "completed": "{done}/{total}個達成",
+    "all_done": "全ての目標達成！素晴らしい！",
+    "add_goal": "目標を追加",
+    "add_a_goal": "目標を追加する",
+    "custom_goal_hint": "何をしますか？",
+    "category": "カテゴリー",
+    "category_health": "健康",
+    "category_mind": "心",
+    "category_social": "社会",
+    "category_creative": "創造",
+    "category_learning": "学習",
+    "xp_reward": "+{xp} XP",
+    "goal_complete_message": "+{xp} XP獲得！",
+    "reset_confirm": "新しい一日のために目標がリセットされました！"
+  },
+
+  "journal": {
+    "title": "日記",
+    "empty": "まだ日記がありません。\n気持ちを書いてみましょう！",
+    "new_entry": "新しい日記",
+    "edit_entry": "日記を編集",
+    "untitled": "タイトルなし",
+    "entry_title_hint": "タイトルを入力...",
+    "entry_content_hint": "今日はどんな気持ちですか？",
+    "mood_great": "最高",
+    "mood_good": "良い",
+    "mood_okay": "普通",
+    "mood_bad": "良くない",
+    "mood_terrible": "最悪",
+    "how_are_you": "今の気持ちは？",
+    "today": "今日",
+    "yesterday": "昨日"
+  },
+
+  "profile": {
+    "title": "プロフィール",
+    "your_pet": "あなたのKaigin",
+    "stats_title": "統計",
+    "total_goals": "達成した目標",
+    "total_xp": "合計XP",
+    "level": "レベル",
+    "current_streak": "連続日数",
+    "days": "{count}日",
+    "app_settings": "アプリ設定",
+    "about": "Kaigin Petについて",
+    "companion": "あなたのバーチャルセルフケアパートナー"
+  },
+
+  "error": {
+    "network": "インターネット接続がありません。ネットワークを確認して再試行してください。",
+    "server": "サーバーで問題が発生しました。しばらくしてから再試行してください。",
+    "auth": "権限がありません。サインインして再試行してください。",
+    "parsing": "データを読み取れませんでした。再試行してください。",
+    "unexpected": "予期しないエラーが発生しました。再試行してください。"
+  }
+}

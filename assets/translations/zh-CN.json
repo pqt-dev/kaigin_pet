@@ -1,0 +1,102 @@
+{
+  "app_name": "Kaigin Pet",
+  "ok": "好",
+  "cancel": "取消",
+  "retry": "重试",
+  "save": "保存",
+  "delete": "删除",
+  "add": "添加",
+  "done": "完成",
+  "close": "关闭",
+
+  "home": "主页",
+  "tab_goals": "目标",
+  "tab_journal": "日记",
+  "tab_profile": "个人",
+
+  "setting": "设置",
+  "language": "语言",
+  "language_system": "系统语言",
+  "theme": "主题",
+  "theme_light": "浅色",
+  "theme_dark": "深色",
+  "theme_system": "系统",
+
+  "pet": {
+    "level": "第 {level} 级",
+    "xp_progress": "{current} / {max} XP",
+    "mood_ecstatic": "欣喜若狂！",
+    "mood_happy": "开心",
+    "mood_neutral": "一般",
+    "mood_sad": "难过",
+    "mood_tired": "疲惫",
+    "greeting_morning": "早上好！",
+    "greeting_afternoon": "下午好！",
+    "greeting_evening": "晚上好！",
+    "goals_summary": "今日已完成 {done}/{total} 个目标",
+    "level_up": "升级！🎉",
+    "level_up_message": "🎉 升级了！你已到达第 {level} 级！",
+    "xp_earned": "+{xp} XP 获得！🐦",
+    "feeling": "心情",
+    "today_progress": "今日进度"
+  },
+
+  "goals": {
+    "title": "今日目标",
+    "empty": "还没有目标，添加一个吧！",
+    "completed": "已完成 {done}/{total}",
+    "all_done": "所有目标完成！太棒了！",
+    "add_goal": "添加目标",
+    "add_a_goal": "添加一个目标",
+    "custom_goal_hint": "你想做什么？",
+    "category": "分类",
+    "category_health": "健康",
+    "category_mind": "思维",
+    "category_social": "社交",
+    "category_creative": "创意",
+    "category_learning": "学习",
+    "xp_reward": "+{xp} XP",
+    "goal_complete_message": "+{xp} XP 获得！",
+    "reset_confirm": "新的一天，目标已重置！"
+  },
+
+  "journal": {
+    "title": "日记",
+    "empty": "还没有日记。\n记录你的心情吧！",
+    "new_entry": "新建日记",
+    "edit_entry": "编辑日记",
+    "untitled": "无标题",
+    "entry_title_hint": "给日记起个标题...",
+    "entry_content_hint": "今天感觉怎么样？随便写点什么...",
+    "mood_great": "很棒",
+    "mood_good": "不错",
+    "mood_okay": "一般",
+    "mood_bad": "不好",
+    "mood_terrible": "很糟",
+    "how_are_you": "你现在感觉如何？",
+    "today": "今天",
+    "yesterday": "昨天"
+  },
+
+  "profile": {
+    "title": "个人",
+    "your_pet": "你的 Kaigin",
+    "stats_title": "统计",
+    "total_goals": "完成目标",
+    "total_xp": "总 XP",
+    "level": "等级",
+    "current_streak": "连续天数",
+    "days": "{count} 天",
+    "app_settings": "应用设置",
+    "about": "关于 Kaigin Pet",
+    "companion": "你的虚拟自我关怀伙伴"
+  },
+
+  "error": {
+    "network": "无网络连接，请检查网络后重试。",
+    "server": "服务器出现问题，请稍后重试。",
+    "auth": "未授权，请登录后重试。",
+    "parsing": "无法读取数据，请重试。",
+    "unexpected": "发生意外错误，请重试。"
+  }
+}

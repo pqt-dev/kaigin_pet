@@ -1,0 +1,102 @@
+{
+  "app_name": "Kaigin Pet",
+  "ok": "확인",
+  "cancel": "취소",
+  "retry": "재시도",
+  "save": "저장",
+  "delete": "삭제",
+  "add": "추가",
+  "done": "완료",
+  "close": "닫기",
+
+  "home": "홈",
+  "tab_goals": "목표",
+  "tab_journal": "일기",
+  "tab_profile": "프로필",
+
+  "setting": "설정",
+  "language": "언어",
+  "language_system": "시스템 언어",
+  "theme": "테마",
+  "theme_light": "밝게",
+  "theme_dark": "어둡게",
+  "theme_system": "시스템",
+
+  "pet": {
+    "level": "{level} 레벨",
+    "xp_progress": "{current} / {max} XP",
+    "mood_ecstatic": "황홀해요!",
+    "mood_happy": "행복해요",
+    "mood_neutral": "보통이에요",
+    "mood_sad": "슬퍼요",
+    "mood_tired": "피곤해요",
+    "greeting_morning": "좋은 아침이에요!",
+    "greeting_afternoon": "좋은 오후예요!",
+    "greeting_evening": "좋은 저녁이에요!",
+    "goals_summary": "오늘 목표 {done}/{total}개 완료",
+    "level_up": "레벨 업! 🎉",
+    "level_up_message": "🎉 레벨 업! {level} 레벨에 도달했어요!",
+    "xp_earned": "+{xp} XP 획득! 🐦",
+    "feeling": "기분",
+    "today_progress": "오늘의 진행 상황"
+  },
+
+  "goals": {
+    "title": "오늘의 목표",
+    "empty": "목표가 없어요. 추가해 보세요!",
+    "completed": "{done}/{total}개 완료",
+    "all_done": "모든 목표 완료! 대단해요!",
+    "add_goal": "목표 추가",
+    "add_a_goal": "목표 추가하기",
+    "custom_goal_hint": "무엇을 하고 싶으신가요?",
+    "category": "카테고리",
+    "category_health": "건강",
+    "category_mind": "마음",
+    "category_social": "사회",
+    "category_creative": "창의",
+    "category_learning": "학습",
+    "xp_reward": "+{xp} XP",
+    "goal_complete_message": "+{xp} XP 획득!",
+    "reset_confirm": "새로운 하루를 위해 목표가 초기화됐어요!"
+  },
+
+  "journal": {
+    "title": "일기",
+    "empty": "아직 일기가 없어요.\n오늘의 기분을 기록해 보세요!",
+    "new_entry": "새 일기",
+    "edit_entry": "일기 수정",
+    "untitled": "제목 없음",
+    "entry_title_hint": "제목을 입력하세요...",
+    "entry_content_hint": "오늘 기분이 어때요? 무엇이든 써보세요...",
+    "mood_great": "최고",
+    "mood_good": "좋음",
+    "mood_okay": "보통",
+    "mood_bad": "좋지 않음",
+    "mood_terrible": "최악",
+    "how_are_you": "지금 기분이 어때요?",
+    "today": "오늘",
+    "yesterday": "어제"
+  },
+
+  "profile": {
+    "title": "프로필",
+    "your_pet": "나의 Kaigin",
+    "stats_title": "통계",
+    "total_goals": "완료한 목표",
+    "total_xp": "총 XP",
+    "level": "레벨",
+    "current_streak": "연속 일수",
+    "days": "{count}일",
+    "app_settings": "앱 설정",
+    "about": "Kaigin Pet 정보",
+    "companion": "나의 가상 자기 관리 친구"
+  },
+
+  "error": {
+    "network": "인터넷 연결이 없어요. 네트워크를 확인하고 다시 시도해 주세요.",
+    "server": "서버에 문제가 발생했어요. 잠시 후 다시 시도해 주세요.",
+    "auth": "권한이 없어요. 로그인 후 다시 시도해 주세요.",
+    "parsing": "데이터를 읽을 수 없어요. 다시 시도해 주세요.",
+    "unexpected": "예기치 않은 오류가 발생했어요. 다시 시도해 주세요."
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "app_name": "Kaigin Pet",
+  "ok": "OK",
+  "cancel": "Hủy",
+  "retry": "Thử lại",
+  "save": "Lưu",
+  "delete": "Xóa",
+  "add": "Thêm",
+  "done": "Xong",
+  "close": "Đóng",
+
+  "home": "Trang chủ",
+  "tab_goals": "Mục tiêu",
+  "tab_journal": "Nhật ký",
+  "tab_profile": "Hồ sơ",
+
+  "setting": "Cài đặt",
+  "language": "Ngôn ngữ",
+  "language_system": "Ngôn ngữ hệ thống",
+  "theme": "Giao diện",
+  "theme_light": "Sáng",
+  "theme_dark": "Tối",
+  "theme_system": "Hệ thống",
+
+  "pet": {
+    "level": "Cấp {level}",
+    "xp_progress": "{current} / {max} XP",
+    "mood_ecstatic": "Hạnh phúc tột đỉnh!",
+    "mood_happy": "Vui vẻ",
+    "mood_neutral": "Bình thường",
+    "mood_sad": "Buồn bã",
+    "mood_tired": "Mệt mỏi",
+    "greeting_morning": "Chào buổi sáng!",
+    "greeting_afternoon": "Chào buổi chiều!",
+    "greeting_evening": "Chào buổi tối!",
+    "goals_summary": "Đã hoàn thành {done}/{total} mục tiêu hôm nay",
+    "level_up": "Lên cấp! 🎉",
+    "level_up_message": "🎉 Lên cấp! Bạn đã đạt Cấp {level}!",
+    "xp_earned": "+{xp} XP nhận được! 🐦",
+    "feeling": "Cảm xúc",
+    "today_progress": "Tiến độ hôm nay"
+  },
+
+  "goals": {
+    "title": "Mục tiêu hôm nay",
+    "empty": "Chưa có mục tiêu. Thêm ngay!",
+    "completed": "Đã hoàn thành {done}/{total}",
+    "all_done": "Hoàn thành tất cả mục tiêu! Xuất sắc!",
+    "add_goal": "Thêm mục tiêu",
+    "add_a_goal": "Thêm mục tiêu mới",
+    "custom_goal_hint": "Bạn muốn làm gì?",
+    "category": "Danh mục",
+    "category_health": "Sức khỏe",
+    "category_mind": "Tâm trí",
+    "category_social": "Xã hội",
+    "category_creative": "Sáng tạo",
+    "category_learning": "Học tập",
+    "xp_reward": "+{xp} XP",
+    "goal_complete_message": "+{xp} XP nhận được!",
+    "reset_confirm": "Mục tiêu đã được đặt lại cho ngày mới!"
+  },
+
+  "journal": {
+    "title": "Nhật ký",
+    "empty": "Chưa có nhật ký.\nViết cảm xúc của bạn!",
+    "new_entry": "Viết nhật ký",
+    "edit_entry": "Chỉnh sửa nhật ký",
+    "untitled": "Không có tiêu đề",
+    "entry_title_hint": "Đặt tiêu đề cho nhật ký...",
+    "entry_content_hint": "Hôm nay bạn cảm thấy thế nào?",
+    "mood_great": "Tuyệt vời",
+    "mood_good": "Tốt",
+    "mood_okay": "Bình thường",
+    "mood_bad": "Không tốt",
+    "mood_terrible": "Tệ",
+    "how_are_you": "Bạn đang cảm thấy thế nào?",
+    "today": "Hôm nay",
+    "yesterday": "Hôm qua"
+  },
+
+  "profile": {
+    "title": "Hồ sơ",
+    "your_pet": "Kaigin của bạn",
+    "stats_title": "Thống kê",
+    "total_goals": "Mục tiêu hoàn thành",
+    "total_xp": "Tổng XP",
+    "level": "Cấp độ",
+    "current_streak": "Chuỗi ngày",
+    "days": "{count} ngày",
+    "app_settings": "Cài đặt ứng dụng",
+    "about": "Về Kaigin Pet",
+    "companion": "Người bạn đồng hành chăm sóc bản thân ảo"
+  },
+
+  "error": {
+    "network": "Không có kết nối internet. Vui lòng kiểm tra mạng và thử lại.",
+    "server": "Đã xảy ra lỗi máy chủ. Vui lòng thử lại sau.",
+    "auth": "Bạn chưa được xác thực. Vui lòng đăng nhập và thử lại.",
+    "parsing": "Không thể đọc dữ liệu. Vui lòng thử lại.",
+    "unexpected": "Đã xảy ra lỗi không mong muốn. Vui lòng thử lại."
+  }
+}
