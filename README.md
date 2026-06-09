@@ -6,14 +6,25 @@ Built with Flutter using **Clean Architecture** and **BLoC** state management.
 
 ---
 
+## 📖 About
+
+Kaigin Pet is a Flutter portfolio project — a Finch-inspired self-care companion app built to practice Clean Architecture and BLoC at a realistic scale.
+
+The core idea mirrors the original Finch: your bird is a reflection of how well you're taking care of yourself. Complete daily goals, your bird feels happy. Skip them, it feels tired. The bird doesn't reward you — it responds to you.
+
+The app is structured as a full Clean Architecture implementation with three isolated layers (domain / data / presentation), injectable dependency injection, GoRouter shell navigation, and easy_localization for 8 languages. Everything persists locally via SharedPreferences — no backend, no accounts.
+
+---
+
 ## ✨ Features
 
-- **Pet Home** — Your bird companion reacts to your daily progress. Its mood and appearance change based on how many goals you've completed.
+- **Pet Home** — Your bird companion reacts to your daily progress. Its color and expression change based on your current mood (ecstatic → yellow, sad → blue, tired → grey).
 - **Daily Goals** — Set and complete personal goals across 5 categories: Health, Mind, Social, Creative, and Learning. Each goal rewards XP.
-- **XP & Leveling** — Earn XP by completing goals. Your bird levels up as you grow.
+- **XP & Leveling** — Earn XP by completing goals. Your total XP and level are tracked as a stat — the higher the level, the more goals you've completed overall.
 - **Journal** — Write daily entries and track your mood over time.
 - **Profile & Stats** — View your total XP, completed goals, and current level.
 - **Theme** — Light, Dark, and System theme support.
+- **Coach Marks** — First-time feature discovery overlays guide new users through the Home, Goals, and Journal tabs.
 - **Localization** — 8 languages: English, Vietnamese, Japanese, Chinese, Korean, French, Spanish, Portuguese.
 
 ---
@@ -29,6 +40,7 @@ Built with Flutter using **Clean Architecture** and **BLoC** state management.
 | Dependency Injection | [get_it](https://pub.dev/packages/get_it) + [injectable](https://pub.dev/packages/injectable) | ^9.2.0 / ^2.7.1 |
 | Fonts | [google_fonts](https://pub.dev/packages/google_fonts) | ^6.3.3 |
 | Code Generation | [json_serializable](https://pub.dev/packages/json_serializable) + [build_runner](https://pub.dev/packages/build_runner) | ^6.9.0 / ^2.6.0 |
+| Feature Discovery | [tutorial_coach_mark](https://pub.dev/packages/tutorial_coach_mark) | ^1.2.12 |
 
 ---
 
@@ -44,7 +56,7 @@ lib/
 │   └── use_cases/      # One use case per action
 │
 ├── data/               # Data sources and repository implementations
-│   ├── datasources/    # SharedPreferences local storage
+│   ├── datasource/     # SharedPreferences local storage
 │   ├── models/         # JSON-serializable DTOs
 │   └── repositories/   # Concrete repository implementations
 │
@@ -57,7 +69,7 @@ lib/
 │   ├── router/         # GoRouter configuration
 │   └── theme/          # App theme + ThemeCubit
 │
-└── infrastructure/     # DI setup, constants, app-wide config
+└── core/               # DI setup, constants, app-wide config
 ```
 
 State is managed with Cubits (`PetCubit`, `GoalsCubit`, `JournalCubit`, `ThemeCubit`). Both `PetCubit` and `GoalsCubit` are provided at the shell level (`MainHomeScreen`) so that completing a goal immediately updates the bird's mood and XP bar on the Home tab.
@@ -101,7 +113,7 @@ Translation files live in `assets/translations/`. To add a new language:
 
 1. Copy `en-US.json` and rename it (e.g. `de-DE.json`)
 2. Translate all values
-3. Add the locale to `LocaleConstants.all` in `lib/infrastructure/constants/locale_constants.dart`
+3. Add the locale to `LocaleConstants.all` in `lib/core/constants/locale_constants.dart`
 4. Run `make l10n` to regenerate codegen files
 
 ---
