@@ -1,38 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../domain/core/app_theme_mode.dart';
-import '../../domain/use_cases/theme/theme_use_case.dart';
+import 'package:kaigin_pet/core/constants/storage_keys.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ThemeCubit extends Cubit<ThemeMode> {
-  final ThemeUseCase _themeUseCase;
+  final SharedPreferences _prefs;
 
-  ThemeCubit(this._themeUseCase) : super(ThemeMode.system);
+  ThemeCubit(this._prefs) : super(ThemeMode.system);
 
   Future<void> loadTheme() async {
-    final appThemeMode = await _themeUseCase.fetch();
-    emit(_toThemeMode(appThemeMode));
+    final saved = _prefs.getString(StorageKeys.themeModeKey);
+    final mode = switch (saved) {
+      'light' => ThemeMode.light,
+      'dark' => ThemeMode.dark,
+      _ => ThemeMode.system,
+    };
+    emit(mode);
   }
 
   Future<void> setTheme(ThemeMode theme) async {
-    final appThemeMode = _toAppThemeMode(theme);
-    await _themeUseCase.save(appThemeMode);
+    final name = switch (theme) {
+      ThemeMode.light => 'light',
+      ThemeMode.dark => 'dark',
+      ThemeMode.system => 'system',
+    };
+    await _prefs.setString(StorageKeys.themeModeKey, name);
     emit(theme);
-  }
-
-  ThemeMode _toThemeMode(AppThemeMode mode) {
-    return switch (mode) {
-      AppThemeMode.light => ThemeMode.light,
-      AppThemeMode.dark => ThemeMode.dark,
-      AppThemeMode.system => ThemeMode.system,
-    };
-  }
-
-  AppThemeMode _toAppThemeMode(ThemeMode mode) {
-    return switch (mode) {
-      ThemeMode.light => AppThemeMode.light,
-      ThemeMode.dark => AppThemeMode.dark,
-      ThemeMode.system => AppThemeMode.system,
-    };
   }
 }

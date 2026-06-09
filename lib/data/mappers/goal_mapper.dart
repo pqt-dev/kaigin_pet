@@ -1,4 +1,4 @@
-import 'package:kaigin_pet/data/models/goal/goal_model.dart';
+import 'package:kaigin_pet/data/models/goal_model.dart';
 import 'package:kaigin_pet/domain/entities/goal.dart';
 
 extension GoalModelX on GoalModel {

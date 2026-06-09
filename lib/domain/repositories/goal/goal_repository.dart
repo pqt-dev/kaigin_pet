@@ -6,4 +6,6 @@ abstract interface class GoalRepository {
   Future<Result<List<Goal>>> saveGoals(List<Goal> goals);
   Future<Result<DateTime?>> getLastResetDate();
   Future<Result<void>> setLastResetDate(DateTime date);
+  Future<Result<int>> getLifetimeGoalsCompleted();
+  Future<Result<void>> incrementLifetimeGoalsCompleted(int amount);
 }

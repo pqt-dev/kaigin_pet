@@ -32,7 +32,14 @@ class JournalCubit extends Cubit<JournalState> {
   Future<void> saveEntry(JournalEntry entry) async {
     final result = await _saveEntry(entry);
     if (result is Failure) return;
-    await load();
+    final current = state;
+    if (current is JournalLoaded) {
+      final updated = [
+        ...current.entries.where((e) => e.id != entry.id),
+        entry,
+      ]..sort((a, b) => b.date.compareTo(a.date));
+      emit(current.copyWith(updated));
+    }
   }
 
   Future<void> deleteEntry(String id) async {

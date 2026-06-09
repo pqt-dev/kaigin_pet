@@ -128,7 +128,7 @@ class _ProfileView extends StatelessWidget {
             final totalXp =
                 petState is PetLoaded ? petState.pet.totalXp : 0;
             final completedGoals = goalsState is GoalsLoaded
-                ? goalsState.completedCount
+                ? goalsState.lifetimeCompletedCount
                 : 0;
 
             return Card(

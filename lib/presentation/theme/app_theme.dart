@@ -18,13 +18,13 @@ class AppTheme {
       brightness: Brightness.light,
     ),
     scaffoldBackgroundColor: _lightBg,
-    textTheme: GoogleFonts.outfitTextTheme(ThemeData.light().textTheme),
+    textTheme: GoogleFonts.titilliumWebTextTheme(ThemeData.light().textTheme),
     extensions: [_lightThemeExtension],
     appBarTheme: AppBarTheme(
       backgroundColor: _lightBg,
       surfaceTintColor: Colors.transparent,
       elevation: 0,
-      titleTextStyle: GoogleFonts.outfit(
+      titleTextStyle: GoogleFonts.titilliumWeb(
         color: _darkText,
         fontSize: 20,
         fontWeight: FontWeight.w700,
@@ -42,7 +42,7 @@ class AppTheme {
       backgroundColor: Colors.white,
       indicatorColor: _seedColor.withValues(alpha: 0.15),
       labelTextStyle: WidgetStateProperty.all(
-        GoogleFonts.outfit(fontSize: 12, fontWeight: FontWeight.w600),
+        GoogleFonts.titilliumWeb(fontSize: 12, fontWeight: FontWeight.w600),
       ),
     ),
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
@@ -71,13 +71,13 @@ class AppTheme {
       brightness: Brightness.dark,
     ),
     scaffoldBackgroundColor: _darkBg,
-    textTheme: GoogleFonts.outfitTextTheme(ThemeData.dark().textTheme),
+    textTheme: GoogleFonts.titilliumWebTextTheme(ThemeData.dark().textTheme),
     extensions: [_darkThemeExtension],
     appBarTheme: AppBarTheme(
       backgroundColor: _darkBg,
       surfaceTintColor: Colors.transparent,
       elevation: 0,
-      titleTextStyle: GoogleFonts.outfit(
+      titleTextStyle: GoogleFonts.titilliumWeb(
         color: _lightText,
         fontSize: 20,
         fontWeight: FontWeight.w700,
@@ -95,7 +95,7 @@ class AppTheme {
       backgroundColor: _darkSecondaryBg,
       indicatorColor: _seedColor.withValues(alpha: 0.25),
       labelTextStyle: WidgetStateProperty.all(
-        GoogleFonts.outfit(fontSize: 12, fontWeight: FontWeight.w600),
+        GoogleFonts.titilliumWeb(fontSize: 12, fontWeight: FontWeight.w600),
       ),
     ),
     floatingActionButtonTheme: const FloatingActionButtonThemeData(

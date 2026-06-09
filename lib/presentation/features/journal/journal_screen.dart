@@ -3,10 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kaigin_pet/domain/entities/journal_entry.dart';
 import 'package:kaigin_pet/generated/locale_keys.g.dart';
-import 'package:kaigin_pet/infrastructure/di/injection.dart';
+import 'package:kaigin_pet/core/constants/storage_keys.dart';
+import 'package:kaigin_pet/core/di/injection.dart';
 import 'package:kaigin_pet/presentation/features/journal/journal_cubit.dart';
 import 'package:kaigin_pet/presentation/features/journal/journal_entry_form_screen.dart';
 import 'package:kaigin_pet/presentation/features/journal/journal_state.dart';
+import 'package:kaigin_pet/presentation/widgets/coach_mark_content.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 
 class JournalScreen extends StatelessWidget {
   const JournalScreen({super.key});
@@ -20,8 +24,59 @@ class JournalScreen extends StatelessWidget {
   }
 }
 
-class _JournalView extends StatelessWidget {
+class _JournalView extends StatefulWidget {
   const _JournalView();
+
+  @override
+  State<_JournalView> createState() => _JournalViewState();
+}
+
+class _JournalViewState extends State<_JournalView> {
+  final _fabKey = GlobalKey();
+  bool _coachMarkTriggered = false;
+
+  void _maybeShowCoachMark(BuildContext context) {
+    if (_coachMarkTriggered) return;
+    _coachMarkTriggered = true;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      final prefs = getIt<SharedPreferences>();
+      if (prefs.getBool(StorageKeys.journalCoachMarkSeenKey) ?? false) return;
+
+      TutorialCoachMark(
+        targets: [
+          TargetFocus(
+            identify: 'journal-fab',
+            keyTarget: _fabKey,
+            shape: ShapeLightFocus.RRect,
+            radius: 30,
+            paddingFocus: 8,
+            enableOverlayTab: true,
+            enableTargetTab: true,
+            contents: [
+              TargetContent(
+                align: ContentAlign.top,
+                child: const CoachMarkContent(
+                  title: 'Write Your Journal ✍️',
+                  description:
+                      'Tap here to write a new journal entry. Record your mood, thoughts, and wins of the day!',
+                ),
+              ),
+            ],
+          ),
+        ],
+        colorShadow: Colors.black,
+        opacityShadow: 0.8,
+        paddingFocus: 10,
+        onFinish: () =>
+            prefs.setBool(StorageKeys.journalCoachMarkSeenKey, true),
+        onSkip: () {
+          prefs.setBool(StorageKeys.journalCoachMarkSeenKey, true);
+          return true;
+        },
+      ).show(context: context);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +89,7 @@ class _JournalView extends StatelessWidget {
           return Center(child: Text(state.message));
         }
         if (state is JournalLoaded) {
+          _maybeShowCoachMark(context);
           return _buildLoaded(context, state);
         }
         return const SizedBox.shrink();
@@ -103,6 +159,7 @@ class _JournalView extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
+        key: _fabKey,
         onPressed: () => _openNewEntry(context),
         icon: const Icon(Icons.edit_rounded),
         label: Text(LocaleKeys.journal_new_entry.tr()),

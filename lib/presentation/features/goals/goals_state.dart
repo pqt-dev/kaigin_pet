@@ -15,10 +15,12 @@ final class GoalsLoading extends GoalsState {
 final class GoalsLoaded extends GoalsState {
   const GoalsLoaded({
     required this.goals,
+    required this.lifetimeCompletedCount,
     this.lastCompletedGoalXp,
   });
 
   final List<Goal> goals;
+  final int lifetimeCompletedCount;
   final int? lastCompletedGoalXp;
 
   int get completedCount => goals.where((g) => g.isCompleted).length;
@@ -36,10 +38,18 @@ final class GoalsLoaded extends GoalsState {
   List<Goal> get learningGoals =>
       goals.where((g) => g.category == GoalCategory.learning).toList();
 
-  GoalsLoaded copyWith({List<Goal>? goals, int? lastCompletedGoalXp}) {
+  GoalsLoaded copyWith({
+    List<Goal>? goals,
+    int? lifetimeCompletedCount,
+    int? lastCompletedGoalXp,
+    bool clearXp = false,
+  }) {
     return GoalsLoaded(
       goals: goals ?? this.goals,
-      lastCompletedGoalXp: lastCompletedGoalXp,
+      lifetimeCompletedCount:
+          lifetimeCompletedCount ?? this.lifetimeCompletedCount,
+      lastCompletedGoalXp:
+          clearXp ? null : (lastCompletedGoalXp ?? this.lastCompletedGoalXp),
     );
   }
 }

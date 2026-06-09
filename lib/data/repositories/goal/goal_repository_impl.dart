@@ -52,4 +52,24 @@ class GoalRepositoryImpl implements GoalRepository {
       return const Failure(UnexpectedError());
     }
   }
+
+  @override
+  Future<Result<int>> getLifetimeGoalsCompleted() async {
+    try {
+      final count = await _datasource.getLifetimeGoalsCompleted();
+      return Success(count);
+    } catch (e) {
+      return const Failure(UnexpectedError());
+    }
+  }
+
+  @override
+  Future<Result<void>> incrementLifetimeGoalsCompleted(int amount) async {
+    try {
+      await _datasource.incrementLifetimeGoalsCompleted(amount);
+      return const Success(null);
+    } catch (e) {
+      return const Failure(UnexpectedError());
+    }
+  }
 }

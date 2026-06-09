@@ -1,4 +1,4 @@
-import 'package:kaigin_pet/data/models/pet/pet_model.dart';
+import 'package:kaigin_pet/data/models/pet_model.dart';
 
 abstract interface class PetDatasource {
   Future<PetModel?> getPet();

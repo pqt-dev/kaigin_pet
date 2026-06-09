@@ -3,10 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kaigin_pet/domain/entities/pet.dart';
 import 'package:kaigin_pet/generated/locale_keys.g.dart';
+import 'package:kaigin_pet/core/constants/storage_keys.dart';
+import 'package:kaigin_pet/core/di/injection.dart';
 import 'package:kaigin_pet/presentation/features/pet/pet_cubit.dart';
 import 'package:kaigin_pet/presentation/features/pet/pet_state.dart';
 import 'package:kaigin_pet/presentation/features/pet/widgets/pet_bird_widget.dart';
 import 'package:kaigin_pet/presentation/features/pet/widgets/xp_progress_bar.dart';
+import 'package:kaigin_pet/presentation/widgets/coach_mark_content.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 
 class PetHomeScreen extends StatelessWidget {
   const PetHomeScreen({super.key});
@@ -17,8 +22,151 @@ class PetHomeScreen extends StatelessWidget {
   }
 }
 
-class _PetHomeView extends StatelessWidget {
+class _PetHomeView extends StatefulWidget {
   const _PetHomeView();
+
+  @override
+  State<_PetHomeView> createState() => _PetHomeViewState();
+}
+
+class _PetHomeViewState extends State<_PetHomeView> {
+  final _moodBadgeKey = GlobalKey();
+  final _petBirdKey = GlobalKey();
+  final _xpBarKey = GlobalKey();
+  final _moodCardKey = GlobalKey();
+  final _goalsSummaryKey = GlobalKey();
+  bool _coachMarkTriggered = false;
+
+  void _maybeShowCoachMark(BuildContext context) {
+    if (_coachMarkTriggered) return;
+    _coachMarkTriggered = true;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      final prefs = getIt<SharedPreferences>();
+      if (prefs.getBool(StorageKeys.homeCoachMarkSeenKey) ?? false) return;
+
+      TutorialCoachMark(
+        targets: [
+          TargetFocus(
+            identify: 'mood-badge',
+            keyTarget: _moodBadgeKey,
+            shape: ShapeLightFocus.RRect,
+            radius: 20,
+            paddingFocus: 8,
+            enableOverlayTab: true,
+            enableTargetTab: true,
+            contents: [
+              TargetContent(
+                align: ContentAlign.bottom,
+                child: const CoachMarkContent(
+                  title: "Mood Badge 🎭",
+                  description:
+                      "A quick-glance indicator of Kaigin's current mood.\n\n"
+                      "The color and emoji update automatically throughout the day as you complete goals. "
+                      "Gold = ecstatic, orange = happy, blue = sad, grey = tired.",
+                ),
+              ),
+            ],
+          ),
+          TargetFocus(
+            identify: 'pet-bird',
+            keyTarget: _petBirdKey,
+            shape: ShapeLightFocus.RRect,
+            radius: 24,
+            paddingFocus: 12,
+            enableOverlayTab: true,
+            enableTargetTab: true,
+            contents: [
+              TargetContent(
+                align: ContentAlign.bottom,
+                child: const CoachMarkContent(
+                  title: "This is Kaigin! 🐦",
+                  description:
+                      "Kaigin is your hand-drawn, animated companion. "
+                      "The color, expression, and energy all reflect the current mood — "
+                      "golden & sparkling when ecstatic, droopy-eyed when tired.\n\n"
+                      "Complete daily goals to keep Kaigin glowing!",
+                ),
+              ),
+            ],
+          ),
+          TargetFocus(
+            identify: 'xp-bar',
+            keyTarget: _xpBarKey,
+            shape: ShapeLightFocus.RRect,
+            radius: 10,
+            paddingFocus: 8,
+            enableOverlayTab: true,
+            enableTargetTab: true,
+            contents: [
+              TargetContent(
+                align: ContentAlign.top,
+                child: const CoachMarkContent(
+                  title: "XP & Level Up ⭐",
+                  description:
+                      "Every goal you complete earns XP. Fill this bar to reach the next level!\n\n"
+                      "Higher levels mean a more vibrant, expressive Kaigin. "
+                      "The bar shows your progress: current XP / XP needed for next level.",
+                ),
+              ),
+            ],
+          ),
+          TargetFocus(
+            identify: 'mood-card',
+            keyTarget: _moodCardKey,
+            shape: ShapeLightFocus.RRect,
+            radius: 16,
+            paddingFocus: 8,
+            enableOverlayTab: true,
+            enableTargetTab: true,
+            contents: [
+              TargetContent(
+                align: ContentAlign.top,
+                child: const CoachMarkContent(
+                  title: "Mood in Detail 💭",
+                  description:
+                      "Kaigin has 5 mood levels based on how many goals you complete today:\n\n"
+                      "😴 Tired  →  😔 Sad  →  😐 Neutral\n"
+                      "→  😊 Happy  →  🌟 Ecstatic\n\n"
+                      "Complete all goals to reach Ecstatic — the happiest Kaigin can be!",
+                ),
+              ),
+            ],
+          ),
+          TargetFocus(
+            identify: 'goals-summary',
+            keyTarget: _goalsSummaryKey,
+            shape: ShapeLightFocus.RRect,
+            radius: 16,
+            paddingFocus: 8,
+            enableOverlayTab: true,
+            enableTargetTab: true,
+            contents: [
+              TargetContent(
+                align: ContentAlign.top,
+                child: const CoachMarkContent(
+                  title: "Today's Snapshot 📊",
+                  description:
+                      "A quick count of how many goals you've completed today out of the total.\n\n"
+                      "Head to the Goals tab (bottom navigation) to see all goal categories — "
+                      "Health, Mind, Social, Creative, and Learning — and tick them off one by one!",
+                ),
+              ),
+            ],
+          ),
+        ],
+        colorShadow: Colors.black,
+        opacityShadow: 0.8,
+        paddingFocus: 10,
+        onFinish: () =>
+            prefs.setBool(StorageKeys.homeCoachMarkSeenKey, true),
+        onSkip: () {
+          prefs.setBool(StorageKeys.homeCoachMarkSeenKey, true);
+          return true;
+        },
+      ).show(context: context);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +185,7 @@ class _PetHomeView extends StatelessWidget {
           return Center(child: Text(state.message));
         }
         if (state is PetLoaded) {
+          _maybeShowCoachMark(context);
           return _buildLoaded(context, state);
         }
         return const SizedBox.shrink();
@@ -101,7 +250,7 @@ class _PetHomeView extends StatelessWidget {
             ],
           ),
         ),
-        _MoodBadge(mood: mood),
+        _MoodBadge(key: _moodBadgeKey, mood: mood),
       ],
     );
   }
@@ -124,9 +273,10 @@ class _PetHomeView extends StatelessWidget {
       ),
       child: Column(
         children: [
-          PetBirdWidget(mood: state.pet.mood, size: 160),
+          PetBirdWidget(key: _petBirdKey, mood: state.pet.mood, size: 160),
           const SizedBox(height: 20),
           XpProgressBar(
+            key: _xpBarKey,
             level: state.pet.level,
             currentXp: state.pet.currentLevelXp,
             xpToNext: state.pet.xpToNextLevel,
@@ -156,6 +306,7 @@ class _PetHomeView extends StatelessWidget {
     };
 
     return Card(
+      key: _moodCardKey,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
         child: Row(
@@ -191,6 +342,7 @@ class _PetHomeView extends StatelessWidget {
         : state.completedGoals / state.totalGoals;
 
     return Card(
+      key: _goalsSummaryKey,
       child: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
@@ -246,19 +398,20 @@ class _PetHomeView extends StatelessWidget {
   void _showLevelUpSnackBar(BuildContext context, int level) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text(LocaleKeys.pet_level_up_message.tr(namedArgs: {'level': '$level'})),
+        content: Text(LocaleKeys.pet_level_up_message
+            .tr(namedArgs: {'level': '$level'})),
         backgroundColor: Theme.of(context).colorScheme.primary,
         behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         duration: const Duration(seconds: 3),
       ),
     );
   }
-
 }
 
 class _MoodBadge extends StatelessWidget {
-  const _MoodBadge({required this.mood});
+  const _MoodBadge({super.key, required this.mood});
 
   final PetMood mood;
 

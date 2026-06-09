@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:kaigin_pet/data/datasource/pet/pet_datasource.dart';
-import 'package:kaigin_pet/data/models/pet/pet_model.dart';
-import 'package:kaigin_pet/infrastructure/constants/storage_keys.dart';
+import 'package:kaigin_pet/data/models/pet_model.dart';
+import 'package:kaigin_pet/core/constants/storage_keys.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

@@ -112,11 +112,11 @@ class _JournalEntryFormScreenState extends State<JournalEntryFormScreen> {
     );
   }
 
-  void _save() {
+  Future<void> _save() async {
     final title = _titleCtrl.text.trim();
     final content = _contentCtrl.text.trim();
     if (title.isEmpty && content.isEmpty) {
-      Navigator.pop(context);
+      if (context.mounted) Navigator.pop(context);
       return;
     }
 
@@ -129,8 +129,9 @@ class _JournalEntryFormScreenState extends State<JournalEntryFormScreen> {
       date: widget.existing?.date ?? DateTime.now(),
     );
 
-    context.read<JournalCubit>().saveEntry(entry);
-    Navigator.pop(context);
+    final cubit = context.read<JournalCubit>();
+    await cubit.saveEntry(entry);
+    if (mounted) Navigator.pop(context);
   }
 }
 

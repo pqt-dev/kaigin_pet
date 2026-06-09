@@ -1,4 +1,4 @@
-import 'package:kaigin_pet/data/models/pet/pet_model.dart';
+import 'package:kaigin_pet/data/models/pet_model.dart';
 import 'package:kaigin_pet/domain/entities/pet.dart';
 
 extension PetModelX on PetModel {

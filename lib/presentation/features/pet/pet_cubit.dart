@@ -1,5 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kaigin_pet/domain/core/result.dart';
+import 'package:kaigin_pet/domain/entities/goal.dart';
+import 'package:kaigin_pet/domain/entities/pet.dart';
 import 'package:kaigin_pet/domain/use_cases/goal/get_goals_use_case.dart';
 import 'package:kaigin_pet/domain/use_cases/pet/add_xp_use_case.dart';
 import 'package:kaigin_pet/domain/use_cases/pet/get_pet_use_case.dart';
@@ -31,12 +33,13 @@ class PetCubit extends Cubit<PetState> {
     }
 
     final goalsResult = await _getGoals();
-    final goals = goalsResult is Success ? (goalsResult as dynamic).value : [];
-    final completed = (goals as List).where((g) => g.isCompleted).length;
+    final List<Goal> goals =
+        goalsResult is Success<List<Goal>> ? goalsResult.value : [];
+    final completed = goals.where((g) => g.isCompleted).length;
     final total = goals.length;
 
     emit(PetLoaded(
-      pet: (petResult as Success).value,
+      pet: (petResult as Success<Pet>).value,
       completedGoals: completed,
       totalGoals: total,
     ));
@@ -50,18 +53,11 @@ class PetCubit extends Cubit<PetState> {
     final result = await _addXp(xpAmount: amount);
     if (result is Failure) return;
 
-    final newPet = (result as Success).value;
-    final leveledUp = newPet.level > prevLevel;
-
-    await _updateMood(
-      completedGoals: current.completedGoals,
-      totalGoals: current.totalGoals,
-    );
+    final newPet = (result as Success<Pet>).value;
 
     emit(current.copyWith(
       pet: newPet,
-      justLeveledUp: leveledUp,
-      xpGained: amount,
+      justLeveledUp: newPet.level > prevLevel,
     ));
   }
 
@@ -74,23 +70,21 @@ class PetCubit extends Cubit<PetState> {
       totalGoals: total,
     );
 
-    final pet = moodResult is Success
-        ? (moodResult as Success).value
-        : current.pet;
+    final pet =
+        moodResult is Success<Pet> ? moodResult.value : current.pet;
 
     emit(current.copyWith(
       pet: pet,
       completedGoals: completed,
       totalGoals: total,
       justLeveledUp: false,
-      xpGained: null,
     ));
   }
 
   void clearLevelUp() {
     final current = state;
     if (current is PetLoaded) {
-      emit(current.copyWith(justLeveledUp: false, xpGained: null));
+      emit(current.copyWith(justLeveledUp: false));
     }
   }
 }

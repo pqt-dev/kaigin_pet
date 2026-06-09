@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:kaigin_pet/data/datasource/goal/goal_datasource.dart';
-import 'package:kaigin_pet/data/models/goal/goal_model.dart';
-import 'package:kaigin_pet/infrastructure/constants/storage_keys.dart';
+import 'package:kaigin_pet/data/models/goal_model.dart';
+import 'package:kaigin_pet/core/constants/storage_keys.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -39,5 +39,15 @@ class GoalDatasourceLocal implements GoalDatasource {
   Future<void> setLastResetDate(DateTime date) async {
     await _prefs.setInt(
         StorageKeys.lastResetDateKey, date.millisecondsSinceEpoch);
+  }
+
+  @override
+  Future<int> getLifetimeGoalsCompleted() async =>
+      _prefs.getInt(StorageKeys.totalGoalsCompletedKey) ?? 0;
+
+  @override
+  Future<void> incrementLifetimeGoalsCompleted(int amount) async {
+    final current = _prefs.getInt(StorageKeys.totalGoalsCompletedKey) ?? 0;
+    await _prefs.setInt(StorageKeys.totalGoalsCompletedKey, current + amount);
   }
 }

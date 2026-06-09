@@ -6,6 +6,7 @@ class StorageKeys {
   static const journalDataKey = 'finch_journal_data';
   static const lastResetDateKey = 'finch_last_reset_date';
   static const totalGoalsCompletedKey = 'finch_total_goals';
-  static const streakKey = 'finch_streak';
-  static const lastStreakDateKey = 'finch_last_streak_date';
+  static const homeCoachMarkSeenKey = 'finch_cm_home';
+  static const goalsCoachMarkSeenKey = 'finch_cm_goals';
+  static const journalCoachMarkSeenKey = 'finch_cm_journal';
 }

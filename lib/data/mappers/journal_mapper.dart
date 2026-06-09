@@ -1,4 +1,4 @@
-import 'package:kaigin_pet/data/models/journal/journal_entry_model.dart';
+import 'package:kaigin_pet/data/models/journal_entry_model.dart';
 import 'package:kaigin_pet/domain/entities/journal_entry.dart';
 
 extension JournalEntryModelX on JournalEntryModel {
